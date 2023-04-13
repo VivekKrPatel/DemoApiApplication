@@ -13,12 +13,11 @@ public class DemoApiApp2Application {
 
 	public static void main(String[] args) throws Exception{
 
-		URL getUrl = new URL("https://api.chucknorris.io/jokes/random");
+		URL getUrl = new URL("https://api.zippopotam.us/us/33162");
 		HttpURLConnection connection = (HttpURLConnection) getUrl.openConnection();
 		connection.setRequestMethod("GET");
 
 		int responseCode = connection.getResponseCode();
-
 		if(responseCode == 200){
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -32,12 +31,13 @@ public class DemoApiApp2Application {
 			in.close();
 			JSONObject jsonObject = new JSONObject(jsonResponseData.toString());
 			System.out.println(jsonObject);
-//			formatted json
-			System.out.println(jsonObject.toString(3));
-		}else{
-			System.out.println("This is not valid API");
-		}
 
+//			in json format
+			System.out.println(jsonObject.toString(4));
+
+		}else{
+			System.out.println("Invalid API");
+		}
 	}
 
 }
